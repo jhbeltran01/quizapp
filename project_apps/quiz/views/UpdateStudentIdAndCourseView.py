@@ -2,7 +2,7 @@ from django.views import generic
 from project_apps.login.models import Student
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.contri.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from ..forms.UpdateStudentIdAndCourseForm import UpdateStudentIdAndCourseForm
 
