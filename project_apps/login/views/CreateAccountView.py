@@ -2,6 +2,7 @@ from django.views import generic
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth import login
 
 from ..models import Student
 from ..forms.CreateAccountForm import CreateAccountForm
@@ -25,4 +26,6 @@ class CreateAccountView(generic.CreateView):
 			course=form.cleaned_data['course'])
 		
 		new_user.save()
+		login(self.request, new_user)
+
 		return HttpResponseRedirect(reverse('quiz:home')) 
