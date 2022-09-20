@@ -1,11 +1,12 @@
 from django.views import generic
 from django.urls import reverse
 from django.http import HttpResponseRedirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from ..models import Room
 from ..forms.CreateRoomForm import CreateRoomForm
 
-class CreateRoomView(generic.CreateView):
+class CreateRoomView(LoginRequiredMixin, generic.CreateView):
 	model = Room
 	form_class = CreateRoomForm
 	template_name = 'quiz/create-room.html'

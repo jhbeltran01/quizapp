@@ -1,12 +1,13 @@
 from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from ..models import Room
 from ..forms.JoinRoomForm import JoinRoomForm
 
 
-class JoinRoomView(generic.CreateView):
+class JoinRoomView(LoginRequiredMixin, generic.CreateView):
 	model = Room
 	form_class = JoinRoomForm
 	template_name = 'quiz/join-room.html'

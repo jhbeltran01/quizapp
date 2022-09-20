@@ -1,7 +1,9 @@
 from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from ..models import Room
 
-class HomePageView(generic.ListView):
+class HomePageView(LoginRequiredMixin, generic.ListView):
 	model = Room
 	template_name = 'quiz/home.html'
 	context_object_name = 'rooms_list'
