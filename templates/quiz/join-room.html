@@ -1,0 +1,14 @@
+{% extends '../layouts/base.html' %}
+<span></span>
+{% block content %}
+<h1>Join Room</h1>
+<form action="" method="post">
+  {% csrf_token %}
+  <p>{{ room_creator }}</p>
+  <p>{{ room_does_not_exist }}</p>
+  {{ form }}
+  <input type="submit" value="Join Room" />
+</form>
+
+<a href="{% url 'quiz:home' %}">Back to Home</a>
+{% endblock content %}
