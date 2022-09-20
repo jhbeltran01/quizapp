@@ -25,4 +25,4 @@ class CreateAccountView(generic.CreateView):
 			course=form.cleaned_data['course'])
 		
 		new_user.save()
-		return HttpResponseRedirect(reverse('login:landing')) 
+		return HttpResponseRedirect(reverse('quiz:home')) 

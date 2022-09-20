@@ -16,6 +16,16 @@
     .is-student:is(.active) {
       height: 42px;
     }
+
+    .is-private {
+      height: 0;
+      overflow: hidden;
+      transition: 250ms ease-in-out;
+    }
+
+    .is-private:is(.active) {
+      height: 22px;
+    }
   </style>
   <body>
     {% block content %} {% endblock content %}

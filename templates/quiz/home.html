@@ -1,0 +1,46 @@
+{% extends '../layouts/base.html' %}
+<span></span>
+{% block content %}
+<h1>Home Page</h1>
+
+<div>
+  <h2>
+    <span>Created Rooms</span>
+    <a href="{% url 'quiz:create-room' %}">
+      <button>Create New Room</button>
+    </a>
+  </h2>
+  {% if created_room_list %}
+  <ul>
+    {% for room in created_room_list %}
+    <li>
+      <a href="">{{ room.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No created rooms!</p>
+  {% endif %}
+</div>
+
+<div>
+  <h2>
+    <span>Joined Rooms</span>
+    <a href="">
+      <button>Join New Room</button>
+    </a>
+  </h2>
+  {% if joined_room_list %}
+  <ul>
+    {% for room in joined_room_list %}
+    <li>
+      <a href="">{{ room.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No joined rooms!</p>
+  {% endif %}
+</div>
+<span></span>
+{% endblock content %}

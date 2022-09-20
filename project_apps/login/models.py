@@ -13,7 +13,6 @@ class Student(AbstractUser):
 	middle_name = models.CharField(max_length=200, null=True, blank=True, default='')
 	modified_at = models.DateTimeField(auto_now=True)
 
-
 	USERNAME_FIELD = 'email'
 	REQUIRED_FIELDS = ['username', 'last_name', 'first_name']
 

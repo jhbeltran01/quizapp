@@ -1,7 +1,8 @@
 from django.views import generic
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.hashers import make_password
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from ..models import Student
 from ..forms.LoginForm import LoginForm
@@ -21,6 +22,6 @@ class LoginView(generic.FormView):
 		
 		if has_correct_credentials:
 			login(self.request, user[0])
-			return HttpResponse('login')
+			return HttpResponseRedirect(reverse('quiz:home')) 
 		else:
 			return super().form_invalid(form)

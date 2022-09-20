@@ -1,0 +1,25 @@
+{% extends '../layouts/base.html' %}
+<span></span>
+{% block content %}
+<h1>Create New Room</h1>
+<form action="" method="post">
+  {% csrf_token %} {{ form.as_div }}
+  <div class="is-private">
+    <label for="student_list">Student ID List</label>
+    <input class="student-list" type="text" name="student_list" id="student_list" placeholder="2019001,2019002,2019003" />
+  </div>
+  <input type="submit" value="Create Room" />
+</form>
+
+<a href="{% url 'quiz:home' %}">Back to Home</a>
+
+<script>
+  let isPrivateContainer = document.querySelector(".is-private");
+  let studentListInput = document.querySelector(".student-list");
+
+  document.getElementById("id_is_private").addEventListener("change", function (event) {
+    isPrivateContainer.classList.toggle("active");
+    studentListInput.required = event.target.checked;
+  });
+</script>
+{% endblock content %}
