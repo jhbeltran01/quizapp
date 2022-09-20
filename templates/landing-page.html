@@ -1,0 +1,13 @@
+{% extends 'layouts/base.html' %} {% block content %}
+<h1>Welcome to Test App</h1>
+<p>
+  <a href="{% url 'login:create-account' %}">
+    <button>Create Account</button>
+  </a>
+</p>
+<p>
+  <a href="">
+    <button>Login</button>
+  </a>
+</p>
+{% endblock content %}

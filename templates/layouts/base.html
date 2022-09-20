@@ -6,7 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz App</title>
   </head>
+  <style>
+    .is-student {
+      height: 0;
+      overflow: hidden;
+      transition: 250ms ease-in-out;
+    }
+
+    .is-student:is(.active) {
+      height: 42px;
+    }
+  </style>
   <body>
-    {% block context %} {% endblock content %}
+    {% block content %} {% endblock content %}
   </body>
 </html>

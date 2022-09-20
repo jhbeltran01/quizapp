@@ -10,10 +10,12 @@ class Student(AbstractUser):
 	course = models.CharField(max_length=20, null=True, blank=True)
 	first_name = models.CharField(max_length=200, null=False, blank=False)
 	last_name = models.CharField(max_length=200, null=False, blank=False)
-	middle_name = models.CharField(max_length=200, null=False, blank=False, default='')
+	middle_name = models.CharField(max_length=200, null=True, blank=True, default='')
+	modified_at = models.DateTimeField(auto_now=True)
+
 
 	USERNAME_FIELD = 'email'
-	REQUIRED_FIELDS = ['username', 'last_name', 'first_name', 'middle_name']
+	REQUIRED_FIELDS = ['username', 'last_name', 'first_name']
 
 
 	def __str__(self):

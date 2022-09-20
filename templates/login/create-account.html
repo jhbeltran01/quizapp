@@ -1,1 +1,32 @@
-{% extends '../base.html' %}
+{% extends '../layouts/base.html' %}
+<span></span>
+
+{% block content %}
+<h1>Create Account</h1>
+
+<form action="" method="post">
+  {% csrf_token %}
+  <div>{{ form.username }} {{ form.username.errors }}</div>
+  <div>{{ form.email }} {{ form.email.errors }}</div>
+  <div>{{ form.password }} {{ form.password.errors }}</div>
+  <div>{{ form.first_name }} {{ form.first_name.errors }}</div>
+  <div>{{ form.middle_name }} {{ form.middle_name.errors }}</div>
+  <div>{{ form.last_name }} {{ form.last_name.errors }}</div>
+  <div>
+    <input class="checkbox" type="checkbox" name="is_student" id="is_student" />
+    <label for="is_student">Student</label>
+  </div>
+  <div class="is-student">
+    <div>{{ form.student_id }} {{ form.student_id.errors }}</div>
+    <div>{{ form.course }} {{ form.course.errors }}</div>
+  </div>
+  <input type="submit" value="Create Account" />
+</form>
+
+<script>
+  let isStudentContainer = document.querySelector(".is-student");
+  document.getElementById("is_student").addEventListener("change", function (event) {
+    isStudentContainer.classList.toggle("active");
+  });
+</script>
+{% endblock content %}
