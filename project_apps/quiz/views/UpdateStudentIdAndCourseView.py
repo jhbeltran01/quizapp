@@ -2,10 +2,11 @@ from django.views import generic
 from project_apps.login.models import Student
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contri.auth.mixins import LoginRequiredMixin
 
 from ..forms.UpdateStudentIdAndCourseForm import UpdateStudentIdAndCourseForm
 
-class UpdateStudentIdAndCourseView(generic.UpdateView):
+class UpdateStudentIdAndCourseView(LoginRequiredMixin, generic.UpdateView):
 	model = Student
 	form_class = UpdateStudentIdAndCourseForm
 	template_name = 'quiz/update-student-data.html'

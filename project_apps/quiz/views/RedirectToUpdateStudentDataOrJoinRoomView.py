@@ -1,8 +1,10 @@
 from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class RedirectToUpdateStudentDataOrJoinRoomView(generic.RedirectView):
+
+class RedirectToUpdateStudentDataOrJoinRoomView(LoginRequiredMixin, generic.RedirectView):
 	def get(self, *args, **kwargs):
 		print(self.request.user.student_id)
 		if self.request.user.student_id is None or self.request.user.course is None:
