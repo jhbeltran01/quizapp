@@ -3,10 +3,11 @@
 {% block content %}
 <h1>
   <span>Test List</span>
-  <a href="">
+  <a href="{% url 'quiz:create-test' room_id %}">
     <button>Create Test</button>
   </a>
 </h1>
+
 <div>
   {% if test_list %}
   <ul>
