@@ -1,11 +1,12 @@
 from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from ..models import Test
 from ..forms.CreateTestForm import CreateTestForm
 
-class CreateTestView(generic.CreateView):
+class CreateTestView(LoginRequiredMixin, generic.CreateView):
 	model = Test
 	form_class = CreateTestForm
 	template_name = 'quiz/create-test.html'
