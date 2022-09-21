@@ -13,7 +13,7 @@
   <ul>
     {% for test in test_list %}
     <li>
-      <a href="">{{ test.text }}</a>
+      <a href="{% url 'quiz:create-question' test.id %}">{{ test.text }}</a>
     </li>
     {% endfor %}
   </ul>

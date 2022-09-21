@@ -31,3 +31,16 @@ class Test(models.Model):
 
 	def __str__(self):
 		return self.text
+
+
+
+class Question(models.Model):
+	tests = models.ManyToManyField(Test)
+	text = models.CharField(max_length=500)
+	# correct_answer = models.IntegerField()
+	created_at = models.DateTimeField(auto_now_add=True)
+	modified_at = models.DateTimeField(auto_now=True)
+
+
+	def __str__(self):
+		return self.text

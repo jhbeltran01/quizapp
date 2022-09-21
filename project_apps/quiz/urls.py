@@ -7,7 +7,7 @@ from .views.RedirectToUpdateStudentDataOrJoinRoomView import RedirectToUpdateStu
 from .views.UpdateStudentIdAndCourseView import UpdateStudentIdAndCourseView
 from .views.TestListView import TestListView
 from .views.CreateTestView import CreateTestView
-from .views.CreateChoiceView import CreateChoiceView
+from .views.CreateQuestionView import CreateQuestionView
 
 app_name = 'quiz'
 
@@ -19,5 +19,5 @@ urlpatterns = [
 	path('fill-user-data/<str:pk>', UpdateStudentIdAndCourseView.as_view(), name='fill-student-data'),
 	path('created-tests/<int:room_id>/', TestListView.as_view(), name='test-list'),
 	path('create-new-test/<int:pk>', CreateTestView.as_view(), name='create-test'),
-	path('add-choices/<int:pk>', CreateChoiceView.as_view(), name='create-choice')
+	path('create-question/<int:pk>', CreateQuestionView.as_view(), name='create-question')
 ]
