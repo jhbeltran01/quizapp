@@ -1,5 +1,6 @@
 from django.db import models
 from project_apps.login.models import Student
+from django.utils import timezone
 
 class Room(models.Model):
 	members = models.ManyToManyField(Student)
@@ -13,3 +14,18 @@ class Room(models.Model):
 
 	def __str__(self):
 		return self.name
+
+
+
+class Test(models.Model):
+	text = models.CharField(max_length=500, null=False, blank=False)
+	passing_percentage = models.FloatField(null=False, blank=False)
+	publish_at = models.DateTimeField(default=timezone.now)
+	time_limit = models.IntegerField(default=0)
+	close_at = models.DateTimeField()
+	created_at = models.DateTimeField(auto_now_add=True)
+	modified_at = models.DateTimeField(auto_now=True)
+
+
+	def __str__(self):
+		return self.text
