@@ -16,6 +16,5 @@ class CreateTestView(generic.CreateView):
 		return super().post(request, *args, **kwargs)
 
 	def form_valid(self, form):
-		new_test = self.request.user.room_set.get(pk=self.room_id).test_set.create(text=form.cleaned_data['text'], passing_percentage=form.cleaned_data['passing_percentage'])
-		new_test.save()
+		new_test = form.save()
 		return HttpResponseRedirect(reverse('quiz:create-choice', args=(new_test.id,)))
