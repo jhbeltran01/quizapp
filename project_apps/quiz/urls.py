@@ -19,5 +19,5 @@ urlpatterns = [
 	path('fill-user-data/<str:pk>', UpdateStudentIdAndCourseView.as_view(), name='fill-student-data'),
 	path('created-tests/<int:room_id>/', TestListView.as_view(), name='test-list'),
 	path('create-new-test/<int:pk>', CreateTestView.as_view(), name='create-test'),
-	path('create-question/<int:pk>', CreateQuestionView.as_view(), name='create-question')
+	path('create-question/<int:pk>', CreateQuestionView.as_view(), name='create-question'),
 ]

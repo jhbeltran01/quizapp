@@ -18,7 +18,7 @@ class Room(models.Model):
 
 
 class Test(models.Model):
-	room = models.ManyToManyField(Room)
+	rooms = models.ManyToManyField(Room)
 	text = models.CharField(max_length=500, null=False, blank=False)
 	passing_percentage = models.FloatField(null=False, blank=False)
 	# publish_at = models.DateTimeField(default=timezone.now)

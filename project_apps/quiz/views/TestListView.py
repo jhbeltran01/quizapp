@@ -14,6 +14,9 @@ class TestListView(LoginRequiredMixin, generic.ListView):
 		return super().get(*args, **kwargs)
 
 
+	def get_queryset(self):
+		return self.request.user.room_set.get(pk=self.room_id).test_set.all()
+
 	def get_context_data(self, *args, **kwargs):
 		context = super().get_context_data(*args, **kwargs)
 		context['room_id'] = self.room_id
