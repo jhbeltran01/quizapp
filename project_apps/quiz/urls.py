@@ -6,8 +6,7 @@ from .views.JoinRoomView import JoinRoomView
 from .views.RedirectToUpdateStudentDataOrJoinRoomView import RedirectToUpdateStudentDataOrJoinRoomView
 from .views.UpdateStudentIdAndCourseView import UpdateStudentIdAndCourseView
 from .views.TestView import TestView
-from .views.CreateQuestionView import CreateQuestionView
-from .views.QuestionListView import QuestionListView
+from .views.QuestionView import QuestionView
 from .views.ChoiceListView import ChoiceListView
 from .views.CreateChoiceView import CreateChoiceView
 
@@ -20,8 +19,7 @@ urlpatterns = [
 	path('check-data/',RedirectToUpdateStudentDataOrJoinRoomView.as_view(), name='check-data'),
 	path('fill-user-data/<str:pk>', UpdateStudentIdAndCourseView.as_view(), name='fill-student-data'),
 	path('tests/<int:room_id>/', TestView.as_view(), name='test'),
-	path('display-created-questions/<int:room_id>/<int:pk>', QuestionListView.as_view(), name='question-list'),
+	path('questions/<int:room_id>/<int:pk>', QuestionView.as_view(), name='question'),
 	path('display-choices/<int:room_id>/<int:test_id>/<int:question_id>', ChoiceListView.as_view(), name='choice-list'),
-	path('create-question/<int:room_id>/<int:pk>', CreateQuestionView.as_view(), name='create-question'),
 	path('create-choice/<int:room_id>/<int:test_id>/<int:question_id>', CreateChoiceView.as_view(), name='create-choice')
 ]

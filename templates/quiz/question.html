@@ -3,9 +3,6 @@
 {% block content %}
 <h1>
   <span>Questions List</span>
-  <a href="{% url 'quiz:create-question' room_id test_id %}">
-    <button>Create Question</button>
-  </a>
 </h1>
 
 {% if questions_list.exists %}
@@ -20,5 +17,12 @@
 <p>No available questions!</p>
 {% endif %}
 
-<a href="{% url 'quiz:home' %}">Back to Home</a>
+<h1>Create Question</h1>
+
+<form action="" method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <input type="submit" value="Create Question" />
+</form>
+
+<a href="{% url 'quiz:test' room_id %}">Back to Tests</a>
 {% endblock content %}
