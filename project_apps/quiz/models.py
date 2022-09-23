@@ -1,6 +1,6 @@
 from django.db import models
 from project_apps.login.models import Student
-from django.utils import timezone
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Room(models.Model):
 	members = models.ManyToManyField(Student)
@@ -19,7 +19,7 @@ class Room(models.Model):
 
 class Test(models.Model):
 	rooms = models.ManyToManyField(Room)
-	text = models.CharField(max_length=500, null=False, blank=False)
+	text = models.CharField(max_length=500, null=False, blank=False, verbose_name='Test Name')
 	passing_percentage = models.FloatField(null=False, blank=False)
 	# publish_at = models.DateTimeField(default=timezone.now)
 	# time_limit = models.IntegerField(default=0)

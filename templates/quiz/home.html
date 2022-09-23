@@ -14,7 +14,7 @@
   <ul>
     {% for room in created_room_list %}
     <li>
-      <a href="{% url 'quiz:test-list' room.id %}">{{ room.name }}</a>
+      <a href="{% url 'quiz:test' room.id %}">{{ room.name }}</a>
     </li>
     {% endfor %}
   </ul>

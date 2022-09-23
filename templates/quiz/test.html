@@ -1,12 +1,7 @@
 {% extends '../layouts/base.html' %}
 <span></span>
 {% block content %}
-<h1>
-  <span>Test List</span>
-  <a href="{% url 'quiz:create-test' room_id %}">
-    <button>Create Test</button>
-  </a>
-</h1>
+<h1>Test List</h1>
 
 <div>
   {% if test_list.exists %}
@@ -21,6 +16,13 @@
   <p>No available test!</p>
   {% endif %}
 </div>
+
+<h1>Create New Test</h1>
+
+<form action="" method="post">
+  {% csrf_token %} {{form.as_p}}
+  <input type="submit" value="Create Test" />
+</form>
 
 <a href="{% url 'quiz:home' %}">Back to Home</a>
 {% endblock content %}
