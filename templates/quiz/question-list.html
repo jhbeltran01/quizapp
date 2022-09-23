@@ -8,7 +8,7 @@
   </a>
 </h1>
 
-{% if questions_list %}
+{% if questions_list.exists %}
 <ul>
   {% for question in questions_list %}
   <li>
