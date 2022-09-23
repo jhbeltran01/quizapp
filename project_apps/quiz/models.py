@@ -36,7 +36,7 @@ class Test(models.Model):
 
 class Question(models.Model):
 	tests = models.ManyToManyField(Test)
-	text = models.CharField(max_length=500)
+	text = models.CharField(max_length=500, verbose_name='Question')
 	# correct_answer = models.IntegerField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	modified_at = models.DateTimeField(auto_now=True)
@@ -49,7 +49,7 @@ class Question(models.Model):
 
 class Choice(models.Model):
   question = models.ForeignKey(Question, on_delete=models.CASCADE)
-  text = models.CharField(max_length=200, null=False, blank=False)
+  text = models.CharField(max_length=200, verbose_name="Choice")
   vote = models.IntegerField(default=0)
   is_the_correct_answer = models.BooleanField(default=False)
   

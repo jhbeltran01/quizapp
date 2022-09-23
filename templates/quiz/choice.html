@@ -21,4 +21,11 @@
   <p>No choices available!</p>
   {% endif %}
 </div>
+
+<h1>Create Choice</h1>
+
+<form action="" method="post">
+  {% csrf_token %}{{ form.as_p }}
+  <input type="submit" value="Create Choice" />
+</form>
 {% endblock content %}
