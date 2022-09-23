@@ -44,3 +44,15 @@ class Question(models.Model):
 
 	def __str__(self):
 		return self.text
+
+
+
+class Choice(models.Model):
+  question = models.ForeignKey(Question, on_delete=models.CASCADE)
+  text = models.CharField(max_length=200, null=False, blank=False)
+  vote = models.IntegerField(default=0)
+  is_the_correct_answer = models.BooleanField(default=False)
+  
+  
+  def __str__(self):
+    return self.text

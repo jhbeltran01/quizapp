@@ -1,0 +1,24 @@
+{% extends '../layouts/base.html' %}
+<span></span>
+{% block content %}
+<div>
+  <h1>
+    <span>Choices</span>
+    <a href="">
+      <button>Create Choices</button>
+    </a>
+  </h1>
+
+  {% if choice_list.exists %}
+  <ul>
+    {% for choice in choice_list %}
+    <li>
+      <a href="">{{ choice.text }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No choices available!</p>
+  {% endif %}
+</div>
+{% endblock content %}
