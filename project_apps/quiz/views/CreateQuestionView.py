@@ -12,11 +12,11 @@ class CreateQuestionView(LoginRequiredMixin, generic.CreateView):
 	template_name = 'quiz/create-question.html'
 
 
+	def post(self, *args, **kwargs):
+		self.room_id = kwargs['room_id']
+		self.test_id = kwargs['pk']
+		return super().post(*args, **kwargs)
+
 	def form_valid(self, form):
-		new_question = form.save()
-		self.question_id = new_question.id
-		return self.get_success_url()
-
-
-	def get_success_url(self):
-		return HttpResponseRedirect(reverse('quiz:create-choices', args=(self.question_id,)))
+		self.request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id).question_set.create(text=form.cleaned_data['text'])
+		return HttpResponseRedirect(reverse('quiz:question-list', args=(self.room_id, self.test_id)))

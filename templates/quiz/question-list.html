@@ -3,8 +3,22 @@
 {% block content %}
 <h1>
   <span>Questions List</span>
-  <a href="">
+  <a href="{% url 'quiz:create-question' room_id test_id %}">
     <button>Create Question</button>
   </a>
 </h1>
+
+{% if questions_list %}
+<ul>
+  {% for question in questions_list %}
+  <li>
+    <a href="">{{ question.text }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No available questions!</p>
+{% endif %}
+
+<a href="{% url 'quiz:home' %}">Back to Home</a>
 {% endblock content %}

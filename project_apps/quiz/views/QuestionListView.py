@@ -15,5 +15,11 @@ class QuestionListView(generic.ListView):
 
 
 	def get_queryset(self):
-		print(self.room_id, self.test_id)
 		return self.request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id).question_set.all()
+
+
+	def get_context_data(self, *args, **kwargs):
+		context = super().get_context_data(*args, **kwargs)
+		context['room_id'] = self.room_id
+		context['test_id'] = self.test_id
+		return context
