@@ -10,7 +10,7 @@
       <button>Create New Room</button>
     </a>
   </h2>
-  {% if created_room_list %}
+  {% if created_room_list.exists %}
   <ul>
     {% for room in created_room_list %}
     <li>
@@ -30,7 +30,7 @@
       <button>Join New Room</button>
     </a>
   </h2>
-  {% if joined_room_list %}
+  {% if joined_room_list.exists %}
   <ul>
     {% for room in joined_room_list %}
     <li>
