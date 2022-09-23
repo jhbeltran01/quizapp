@@ -18,6 +18,6 @@ urlpatterns = [
 	path('check-data/',RedirectToUpdateStudentDataOrJoinRoomView.as_view(), name='check-data'),
 	path('fill-user-data/<str:pk>', UpdateStudentIdAndCourseView.as_view(), name='fill-student-data'),
 	path('tests/<int:room_id>/', TestView.as_view(), name='test'),
-	path('questions/<int:room_id>/<int:pk>', QuestionView.as_view(), name='question'),
+	path('questions/<int:room_id>/<int:test_id>', QuestionView.as_view(), name='question'),
 	path('choice/<int:room_id>/<int:test_id>/<int:question_id>', ChoiceView.as_view(), name='choice')
 ]

@@ -15,13 +15,13 @@ class QuestionView(generic.ListView, generic.CreateView):
 	def get(self, request, *args, **kwargs):
 		self.object = None
 		self.room_id = kwargs['room_id']
-		self.test_id = kwargs['pk']
+		self.test_id = kwargs['test_id']
 		return super().get(request, *args, **kwargs)
 
 
 	def post(self, *args, **kwargs):
 		self.room_id = kwargs['room_id']
-		self.test_id = kwargs['pk']
+		self.test_id = kwargs['test_id']
 		return super().post(*args, **kwargs)
 
 

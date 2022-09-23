@@ -28,4 +28,6 @@
   {% csrf_token %}{{ form.as_p }}
   <input type="submit" value="Create Choice" />
 </form>
+
+<a href="{% url 'quiz:question' room_id test_id  %}">Back to Questions List</a>
 {% endblock content %}

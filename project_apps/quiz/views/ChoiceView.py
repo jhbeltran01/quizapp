@@ -40,3 +40,8 @@ class ChoiceView(LoginRequiredMixin, generic.ListView, generic.CreateView):
     return self.request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id).question_set.get(pk=self.question_id).choice_set.all()
   
   
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['room_id'] = self.room_id
+    context['test_id'] = self.test_id
+    return context
