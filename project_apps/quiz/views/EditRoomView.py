@@ -1,12 +1,13 @@
 from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from ..models import Room
 from ..forms.EditRoomForm import EditRoomForm
 
 
-class EditRoomView(generic.UpdateView):
+class EditRoomView(LoginRequiredMixin, generic.UpdateView):
   model = Room
   form_class = EditRoomForm
   template_name = 'quiz/edit-room.html'

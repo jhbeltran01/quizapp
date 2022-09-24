@@ -1,11 +1,12 @@
 from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from ..forms.CreateQuestionForm import CreateQuestionForm
 from ..models import Question
 
-class QuestionView(generic.ListView, generic.CreateView):
+class QuestionView(LoginRequiredMixin, generic.ListView, generic.CreateView):
 	model = Question
 	form_class = CreateQuestionForm
 	template_name = 'quiz/question.html'
