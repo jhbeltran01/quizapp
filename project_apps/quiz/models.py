@@ -1,6 +1,5 @@
 from django.db import models
 from project_apps.login.models import Student
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Room(models.Model):
 	members = models.ManyToManyField(Student)
@@ -19,6 +18,7 @@ class Room(models.Model):
 
 class Test(models.Model):
 	rooms = models.ManyToManyField(Room)
+	user = models.ForeignKey(Student, on_delete=models.CASCADE)
 	text = models.CharField(max_length=500, null=False, blank=False, verbose_name='Test Name')
 	passing_percentage = models.FloatField(null=False, blank=False)
 	created_at = models.DateTimeField(auto_now_add=True)
@@ -31,9 +31,9 @@ class Test(models.Model):
 
 
 class Question(models.Model):
+	user = models.ForeignKey(Student, on_delete=models.CASCADE)
 	tests = models.ManyToManyField(Test)
 	text = models.CharField(max_length=500, verbose_name='Question')
-	# correct_answer = models.IntegerField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	modified_at = models.DateTimeField(auto_now=True)
 

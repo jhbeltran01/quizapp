@@ -29,7 +29,9 @@ class TestView(LoginRequiredMixin, generic.ListView, generic.CreateView):
 
 
 	def form_valid(self, form):
-		new_test = self.request.user.room_set.get(pk=self.room_id).test_set.create(text=form.cleaned_data['text'], passing_percentage=form.cleaned_data['passing_percentage'])
+		room = self.request.user.room_set.get(pk=self.room_id)
+		new_test = self.request.user.test_set.create(text=form.cleaned_data['text'], passing_percentage=form.cleaned_data['passing_percentage'])
+		new_test.rooms.add(room)
 		return HttpResponseRedirect(reverse('quiz:question', args=(self.room_id, new_test.id)))
 
 
