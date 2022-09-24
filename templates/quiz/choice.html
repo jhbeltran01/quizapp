@@ -2,18 +2,16 @@
 <span></span>
 {% block content %}
 <div>
-  <h1>
-    <span>Choices</span>
-    <a href="">
-      <button>Create Choices</button>
-    </a>
-  </h1>
+  <h1>Choices</h1>
 
   {% if choice_list.exists %}
   <ul>
     {% for choice in choice_list %}
     <li>
       <a href="">{{ choice.text }}</a>
+      {% if choice.is_the_correct_answer %}
+      <span> - Answer</span>
+      {% endif %}
     </li>
     {% endfor %}
   </ul>
