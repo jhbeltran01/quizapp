@@ -21,10 +21,6 @@ class Test(models.Model):
 	rooms = models.ManyToManyField(Room)
 	text = models.CharField(max_length=500, null=False, blank=False, verbose_name='Test Name')
 	passing_percentage = models.FloatField(null=False, blank=False)
-	# publish_at = models.DateTimeField(default=timezone.now)
-	# time_limit = models.IntegerField(default=0)
-	# close_at = models.DateTimeField()
-	# started_at = models.DateTimeField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	modified_at = models.DateTimeField(auto_now=True)
 
