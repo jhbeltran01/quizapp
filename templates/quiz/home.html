@@ -15,6 +15,12 @@
     {% for room in created_room_list %}
     <li>
       <a href="{% url 'quiz:test' room.id %}">{{ room.name }}</a>
+      <a href="{% url 'quiz:edit-room' room.id %}">
+        <button>edit</button>
+      </a>
+      <a href="">
+        <button>delete</button>
+      </a>
     </li>
     {% endfor %}
   </ul>
