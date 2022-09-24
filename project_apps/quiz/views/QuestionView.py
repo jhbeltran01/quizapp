@@ -27,7 +27,9 @@ class QuestionView(LoginRequiredMixin, generic.ListView, generic.CreateView):
 
 
 	def form_valid(self, form):
-		new_question = self.request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id).question_set.create(text=form.cleaned_data['text'])
+		test = self.request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id)
+		new_question = self.request.user.question_set.create(text=form.cleaned_data['text'])
+		new_question.tests.add(test)
 		return HttpResponseRedirect(reverse('quiz:choice', args=(self.room_id, self.test_id, new_question.id)))
 
 

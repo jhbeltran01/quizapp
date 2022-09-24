@@ -17,8 +17,8 @@ class Room(models.Model):
 
 
 class Test(models.Model):
-	rooms = models.ManyToManyField(Room)
 	user = models.ForeignKey(Student, on_delete=models.CASCADE)
+	rooms = models.ManyToManyField(Room)
 	text = models.CharField(max_length=500, null=False, blank=False, verbose_name='Test Name')
 	passing_percentage = models.FloatField(null=False, blank=False)
 	created_at = models.DateTimeField(auto_now_add=True)
