@@ -24,5 +24,6 @@
   <input type="submit" value="Create Question" />
 </form>
 
-<a href="{% url 'quiz:test' room_id %}">Back to Tests</a>
+<a href="{% url 'quiz:test' room_id %}">Back to Tests</a><br />
+<a href="{% url 'quiz:home' %}">Back to Home</a>
 {% endblock content %}

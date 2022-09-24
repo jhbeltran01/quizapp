@@ -26,8 +26,8 @@ class QuestionView(generic.ListView, generic.CreateView):
 
 
 	def form_valid(self, form):
-		self.request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id).question_set.create(text=form.cleaned_data['text'])
-		return HttpResponseRedirect(reverse('quiz:question', args=(self.room_id, self.test_id)))
+		new_question = self.request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id).question_set.create(text=form.cleaned_data['text'])
+		return HttpResponseRedirect(reverse('quiz:choice', args=(self.room_id, self.test_id, new_question.id)))
 
 
 	def get_queryset(self):
