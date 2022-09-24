@@ -21,4 +21,4 @@ class CreateRoomView(LoginRequiredMixin, generic.CreateView):
 
 		new_room.save()
 
-		return HttpResponseRedirect(reverse('quiz:home'))
+		return HttpResponseRedirect(reverse('quiz:test', args=(new_room.id,)))
