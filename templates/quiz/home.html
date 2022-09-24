@@ -1,6 +1,18 @@
 {% extends '../layouts/base.html' %}
 <span></span>
 {% block content %}
+
+<div class="popup-delete-room js-popup-delete">
+  <div class="popup-delete-room__content">
+    <p>Are you sure you want to delete:</p>
+    <p class="js-room-name text-center"></p>
+    <button class="js-btn-no">No</button>
+    <a class="js-link-yes" href="">
+      <button>Yes</button>
+    </a>
+  </div>
+</div>
+
 <h1>Home Page</h1>
 
 <div>
@@ -18,9 +30,8 @@
       <a href="{% url 'quiz:edit-room' room.id %}">
         <button>edit</button>
       </a>
-      <a href="">
-        <button>delete</button>
-      </a>
+
+      <button class="js-delete-button" id="{{ room.id }}" name="{{ room.name }}">delete</button>
     </li>
     {% endfor %}
   </ul>
@@ -50,4 +61,23 @@
 </div>
 
 <a href="{% url 'login:logout' %}">Logout</a>
+
+<script>
+  let roomName = document.querySelector(".js-room-name");
+  let popupDeleteRoom = document.querySelector(".js-popup-delete");
+  let linkYes = document.querySelector(".js-link-yes");
+
+  document.querySelectorAll(".js-delete-button").forEach(function (delBtn) {
+    delBtn.addEventListener("click", function (event) {
+      roomName.textContent = event.target.name;
+      popupDeleteRoom.classList.toggle("show");
+      linkYes.href = "delete-room/" + event.target.id;
+    });
+  });
+
+  document.querySelector(".js-btn-no").addEventListener("click", function (event) {
+    popupDeleteRoom.classList.toggle("show");
+  });
+</script>
+
 {% endblock content %}

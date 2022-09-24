@@ -26,6 +26,29 @@
     .is-private:is(.active) {
       height: 22px;
     }
+
+    .popup-delete-room {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.748);
+      position: absolute;
+      inset: 0 0 0 0;
+      display: none;
+      place-items: center;
+    }
+
+    .popup-delete-room__content {
+      max-width: 300px;
+      background-color: white;
+      padding: 1em;
+    }
+
+    .show {
+      display: grid;
+    }
+
+    .text-center {
+      text-align: center;
+    }
   </style>
   <body>
     {% block content %} {% endblock content %}
