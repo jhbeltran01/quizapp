@@ -1,3 +1,4 @@
+from re import S
 from django.views import generic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -15,30 +16,39 @@ class QuestionView(LoginRequiredMixin, generic.ListView, generic.CreateView):
 
 	def get(self, request, *args, **kwargs):
 		self.object = None
-		self.room_id = kwargs['room_id']
-		self.test_id = kwargs['test_id']
+		self.assign_needed_id(kwargs)
+		self.get_test_object(request)
 		return super().get(request, *args, **kwargs)
 
 
 	def post(self, *args, **kwargs):
-		self.room_id = kwargs['room_id']
-		self.test_id = kwargs['test_id']
+		self.assign_needed_id(kwargs)
 		return super().post(*args, **kwargs)
 
 
 	def form_valid(self, form):
-		test = self.request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id)
+		self.get_test_object(self.request)
 		new_question = self.request.user.question_set.create(text=form.cleaned_data['text'])
-		new_question.tests.add(test)
+		new_question.tests.add(self.test)
 		return HttpResponseRedirect(reverse('quiz:choice', args=(self.room_id, self.test_id, new_question.id)))
 
 
 	def get_queryset(self):
-		return self.request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id).question_set.all()
+		return self.test.question_set.all()
 
 
 	def get_context_data(self, *args, **kwargs):
 		context = super().get_context_data(*args, **kwargs)
 		context['room_id'] = self.room_id
 		context['test_id'] = self.test_id
+		print(context)
 		return context
+
+
+	def get_test_object(self, request):
+		self.test = request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id)
+
+
+	def assign_needed_id(self, kwargs):
+		self.room_id = kwargs['room_id']
+		self.test_id = kwargs['test_id']
