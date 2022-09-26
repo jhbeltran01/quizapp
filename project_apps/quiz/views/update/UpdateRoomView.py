@@ -3,8 +3,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from ..models import Room
-from ..forms.EditRoomForm import EditRoomForm
+from ...models import Room
+from ...forms.EditRoomForm import EditRoomForm
 
 
 class UpdateRoomView(LoginRequiredMixin, generic.UpdateView):
