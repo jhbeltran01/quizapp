@@ -8,7 +8,7 @@ from .views.CreateStudent import CreateStudent
 from .views.TestView import TestView
 from .views.QuestionView import QuestionView
 from .views.ChoiceView import ChoiceView
-from .views.EditRoomView import EditRoomView
+from .views.UpdateRoomView import UpdateRoomView
 from .views.DeleteRoom import DeleteRoom
 
 app_name = 'quiz'
@@ -22,6 +22,6 @@ urlpatterns = [
 	path('tests/<int:room_id>/', TestView.as_view(), name='test'),
 	path('questions/<int:room_id>/<int:test_id>', QuestionView.as_view(), name='question'),
 	path('choice/<int:room_id>/<int:test_id>/<int:question_id>', ChoiceView.as_view(), name='choice'),
-	path('edit-room/<int:pk>', EditRoomView.as_view(), name='edit-room'),
+	path('edit-room/<int:pk>', UpdateRoomView.as_view(), name='edit-room'),
 	path('delete-room/<int:room_id>', DeleteRoom.as_view(), name='delete-room')
 ]

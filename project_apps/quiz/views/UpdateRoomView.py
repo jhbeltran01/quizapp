@@ -7,7 +7,7 @@ from ..models import Room
 from ..forms.EditRoomForm import EditRoomForm
 
 
-class EditRoomView(LoginRequiredMixin, generic.UpdateView):
+class UpdateRoomView(LoginRequiredMixin, generic.UpdateView):
   model = Room
   form_class = EditRoomForm
   template_name = 'quiz/edit-room.html'
