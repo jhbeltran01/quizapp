@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from ...forms.CreateStudentForm import CreateStudentForm
 
-class CreateStudent(LoginRequiredMixin, generic.UpdateView):
+class CreateStudentView(LoginRequiredMixin, generic.UpdateView):
 	model = CustomUser
 	form_class = CreateStudentForm
 	template_name = 'quiz/update-student-data.html'
