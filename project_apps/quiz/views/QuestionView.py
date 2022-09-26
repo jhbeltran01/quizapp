@@ -41,7 +41,6 @@ class QuestionView(LoginRequiredMixin, generic.ListView, generic.CreateView):
 		context = super().get_context_data(*args, **kwargs)
 		context['room_id'] = self.room_id
 		context['test_id'] = self.test_id
-		print(context)
 		return context
 
 
