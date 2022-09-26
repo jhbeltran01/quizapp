@@ -5,4 +5,4 @@ from ..models import Room
 class CreateRoomForm(forms.ModelForm):
 	class Meta:
 		model = Room
-		fields = ('name', 'room_code', 'is_private')
+		fields = ('name', 'code', 'is_private')
