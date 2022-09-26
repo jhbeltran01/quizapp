@@ -13,12 +13,12 @@ class EditRoomView(LoginRequiredMixin, generic.UpdateView):
   template_name = 'quiz/edit-room.html'
   
   def get(self, *args, **kwargs):
-    self.room_id = kwargs['pk']
+    self.set_needed_ids(**kwargs)
     return super().get(*args, **kwargs)
   
   
   def post(self, request, *args, **kwargs):
-    self.room_id = kwargs['pk']
+    self.set_needed_ids(**kwargs)
     return super().post(request, *args, **kwargs)
   
   def get_object(self, query=None):
@@ -29,3 +29,7 @@ class EditRoomView(LoginRequiredMixin, generic.UpdateView):
   def form_valid(self, form):
     form.save()
     return HttpResponseRedirect(reverse('quiz:home'))
+  
+  
+  def set_needed_ids(self, **kwargs):
+    self.room_id = kwargs['pk']
