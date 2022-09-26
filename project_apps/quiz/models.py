@@ -1,8 +1,8 @@
 from django.db import models
-from project_apps.login.models import Student
+from project_apps.login.models import CustomUser
 
 class Room(models.Model):
-	members = models.ManyToManyField(Student)
+	members = models.ManyToManyField(CustomUser)
 	creator_id = models.IntegerField(default=0)
 	name = models.CharField(max_length=100)
 	is_private = models.BooleanField(default=False)
@@ -17,7 +17,7 @@ class Room(models.Model):
 
 
 class Test(models.Model):
-	user = models.ForeignKey(Student, on_delete=models.CASCADE)
+	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 	rooms = models.ManyToManyField(Room)
 	text = models.CharField(max_length=500, null=False, blank=False, verbose_name='Test Name')
 	passing_percentage = models.FloatField(null=False, blank=False)
@@ -31,7 +31,7 @@ class Test(models.Model):
 
 
 class Question(models.Model):
-	user = models.ForeignKey(Student, on_delete=models.CASCADE)
+	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 	tests = models.ManyToManyField(Test)
 	text = models.CharField(max_length=500, verbose_name='Question')
 	created_at = models.DateTimeField(auto_now_add=True)

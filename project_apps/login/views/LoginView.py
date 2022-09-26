@@ -4,11 +4,11 @@ from django.contrib.auth.hashers import make_password
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from ..models import Student
+from ..models import CustomUser
 from ..forms.LoginForm import LoginForm
 
 class LoginView(generic.FormView):
-	model = Student
+	model = CustomUser
 	template_name = 'login/login.html'
 	form_class = LoginForm
 
@@ -17,8 +17,8 @@ class LoginView(generic.FormView):
 
 
 	def form_valid(self, form):
-		user = Student.objects.filter(email=self.request.POST['email'], password=make_password(self.request.POST['password'], salt='pbkdf2_sha256'))
-		has_correct_credentials = len(user) > 0
+		user = CustomUser.objects.filter(email=self.request.POST['email'], password=make_password(self.request.POST['password'], salt='pbkdf2_sha256'))
+		has_correct_credentials = user.exists()
 		
 		if has_correct_credentials:
 			login(self.request, user[0])
