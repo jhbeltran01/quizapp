@@ -1,13 +1,13 @@
 from django.urls import path
 
-from .views.HomePageView import HomePageView
+from .views.page.HomePageView import HomePageView
 from .views.create.CreateRoomView import CreateRoomView
-from .views.JoinRoomView import JoinRoomView
+from .views.page.JoinRoomView import JoinRoomView
 from .views.redirect.RedirectToFillStudentDataOrJoinRoomView import RedirectToFillStudentDataOrJoinRoomView
 from .views.create.CreateStudentView import CreateStudentView
-from .views.TestView import TestView
-from .views.QuestionView import QuestionView
-from .views.ChoiceView import ChoiceView
+from .views.page.TestView import TestView
+from .views.page.QuestionView import QuestionView
+from .views.page.ChoiceView import ChoiceView
 from .views.update.UpdateRoomView import UpdateRoomView
 from .views.delete.DeleteRoom import DeleteRoom
 

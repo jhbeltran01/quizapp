@@ -3,8 +3,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from ..models import Room
-from ..forms.JoinRoomForm import JoinRoomForm
+from ...models import Room
+from ...forms.JoinRoomForm import JoinRoomForm
 
 
 class JoinRoomView(LoginRequiredMixin, generic.CreateView):

@@ -1,7 +1,7 @@
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from ..models import Room
+from ...models import Room
 
 class HomePageView(LoginRequiredMixin, generic.ListView):
 	model = Room
