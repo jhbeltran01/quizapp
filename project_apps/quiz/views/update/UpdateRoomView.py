@@ -4,12 +4,12 @@ from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from ...models import Room
-from ...forms.EditRoomForm import EditRoomForm
+from ...forms.update.UpdateRoomForm import UpdateRoomForm
 
 
 class UpdateRoomView(LoginRequiredMixin, generic.UpdateView):
   model = Room
-  form_class = EditRoomForm
+  form_class = UpdateRoomForm
   template_name = 'quiz/edit-room.html'
   
   def get(self, *args, **kwargs):
