@@ -38,7 +38,7 @@ class JoinRoomView(LoginRequiredMixin, generic.CreateView):
 
 
 	def check_if_room_exist(self):
-		self.rooms = Room.objects.filter(room_code=self.request.POST['room_code'])
+		self.rooms = Room.objects.filter(code=self.request.POST['code'])
 		return self.rooms.exists()
 
 
