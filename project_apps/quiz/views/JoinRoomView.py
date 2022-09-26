@@ -39,16 +39,16 @@ class JoinRoomView(LoginRequiredMixin, generic.CreateView):
 
 	def check_if_room_exist(self):
 		self.rooms = Room.objects.filter(room_code=self.request.POST['room_code'])
-		return len(self.rooms) > 0
+		return self.rooms.exists()
 
 
 	def check_if_user_is_room_creator(self):
 		self.room = self.rooms[0]
-		return self.room.creator_id == self.request.user.id
+		return self.room.user == self.request.user
 
 
 	def join_room(self):
-		self.room.members.add(self.request.user)
+		self.room.members.add(self.request.user.student)
 
 
 	def get_context_data(self, *args, **kwargs):

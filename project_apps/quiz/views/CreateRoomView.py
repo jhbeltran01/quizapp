@@ -16,8 +16,7 @@ class CreateRoomView(LoginRequiredMixin, generic.CreateView):
 		new_room = self.request.user.room_set.create(
 			name=form.cleaned_data['name'], 
 			room_code=form.cleaned_data['room_code'], 
-			is_private=form.cleaned_data['is_private'],
-			creator_id=self.request.user.id)
+			is_private=form.cleaned_data['is_private'])
 
 		new_room.save()
 

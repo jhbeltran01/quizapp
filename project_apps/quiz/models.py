@@ -1,9 +1,9 @@
 from django.db import models
-from project_apps.login.models import CustomUser
+from project_apps.login.models import CustomUser, Student
 
 class Room(models.Model):
-	members = models.ManyToManyField(CustomUser)
-	creator_id = models.IntegerField(default=0)
+	user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=0)
+	members = models.ManyToManyField(Student)
 	name = models.CharField(max_length=100)
 	is_private = models.BooleanField(default=False)
 	room_code = models.CharField(max_length=50, default='', unique=True)

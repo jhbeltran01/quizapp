@@ -11,7 +11,7 @@ class HomePageView(LoginRequiredMixin, generic.ListView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = {
-			'joined_room_list': self.request.user.room_set.all().exclude(creator_id=self.request.user.id),
-			'created_room_list': self.request.user.room_set.filter(creator_id=self.request.user.id),
+			'created_room_list': self.request.user.room_set.all(),
+			'joined_room_list': self.request.user.student.room_set.all() if hasattr(self.request.user, 'student') else ''
 		}
 		return context
