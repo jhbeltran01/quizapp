@@ -23,6 +23,12 @@
   <input type="submit" value="Create Account" />
 </form>
 
+<p>
+  <a href="{% url 'login:login' %}">
+    <button>Login</button>
+  </a>
+</p>
+
 <script>
   let isStudentContainer = document.querySelector(".is-student");
   document.getElementById("is_student").addEventListener("change", function (event) {
