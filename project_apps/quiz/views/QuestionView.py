@@ -16,18 +16,18 @@ class QuestionView(LoginRequiredMixin, generic.ListView, generic.CreateView):
 
 	def get(self, request, *args, **kwargs):
 		self.object = None
-		self.assign_needed_id(kwargs)
-		self.get_test_object(request)
+		self.set_needed_id(kwargs)
+		self.set_test_object(request)
 		return super().get(request, *args, **kwargs)
 
 
 	def post(self, *args, **kwargs):
-		self.assign_needed_id(kwargs)
+		self.set_needed_id(kwargs)
 		return super().post(*args, **kwargs)
 
 
 	def form_valid(self, form):
-		self.get_test_object(self.request)
+		self.set_test_object(self.request)
 		new_question = self.request.user.question_set.create(text=form.cleaned_data['text'])
 		new_question.tests.add(self.test)
 		return HttpResponseRedirect(reverse('quiz:choice', args=(self.room_id, self.test_id, new_question.id)))
@@ -44,10 +44,10 @@ class QuestionView(LoginRequiredMixin, generic.ListView, generic.CreateView):
 		return context
 
 
-	def get_test_object(self, request):
+	def set_test_object(self, request):
 		self.test = request.user.room_set.get(pk=self.room_id).test_set.get(pk=self.test_id)
 
 
-	def assign_needed_id(self, kwargs):
+	def set_needed_id(self, kwargs):
 		self.room_id = kwargs['room_id']
 		self.test_id = kwargs['test_id']
