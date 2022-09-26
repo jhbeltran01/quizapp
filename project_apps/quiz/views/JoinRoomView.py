@@ -44,7 +44,7 @@ class JoinRoomView(LoginRequiredMixin, generic.CreateView):
 
 	def check_if_user_is_room_creator(self):
 		self.room = self.rooms[0]
-		return self.room.user == self.request.user
+		return self.room.user.id == self.request.user.id
 
 
 	def join_room(self):
