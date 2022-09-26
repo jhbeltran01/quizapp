@@ -5,5 +5,5 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class DeleteRoom(LoginRequiredMixin, generic.DeleteView):
   def get(self, request, *args, **kwargs):
-    self.request.user.room_set.get(pk=kwargs['room_id']).delete()
+    request.user.room_set.get(pk=kwargs['room_id']).delete()
     return HttpResponseRedirect(reverse('quiz:home'))
