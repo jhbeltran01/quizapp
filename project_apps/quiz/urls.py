@@ -1,10 +1,10 @@
 from django.urls import path
 
 from .views.HomePageView import HomePageView
-from .views.CreateRoomView import CreateRoomView
+from .views.create.CreateRoomView import CreateRoomView
 from .views.JoinRoomView import JoinRoomView
 from .views.RedirectToFillStudentDataOrJoinRoomView import RedirectToFillStudentDataOrJoinRoomView
-from .views.CreateStudent import CreateStudent
+from .views.create.CreateStudent import CreateStudent
 from .views.TestView import TestView
 from .views.QuestionView import QuestionView
 from .views.ChoiceView import ChoiceView
