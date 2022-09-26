@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from ...models import Room
-from ...forms.CreateRoomForm import CreateRoomForm
+from ...forms.create.CreateRoomForm import CreateRoomForm
 
 class CreateRoomView(LoginRequiredMixin, generic.CreateView):
 	model = Room

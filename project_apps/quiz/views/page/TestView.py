@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from ...forms.CreateTestForm import CreateTestForm
+from ...forms.create.CreateTestForm import CreateTestForm
 from ...models import Test
 
 

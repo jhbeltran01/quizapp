@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from ...forms.CreateQuestionForm import CreateQuestionForm
+from ...forms.create.CreateQuestionForm import CreateQuestionForm
 from ...models import Question
 
 class QuestionView(LoginRequiredMixin, generic.ListView, generic.CreateView):

@@ -1,6 +1,6 @@
 from django import forms
 
-from ..models import Question
+from ...models import Question
 
 
 class CreateQuestionForm(forms.ModelForm):

@@ -1,7 +1,7 @@
 from dataclasses import field
 from django import forms
 
-from ..models import Choice
+from ...models import Choice
 
 
 class CreateChoiceForm(forms.ModelForm):

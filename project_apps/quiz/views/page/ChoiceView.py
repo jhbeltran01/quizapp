@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from ...forms.CreateChoiceForm import CreateChoiceForm
+from ...forms.create.CreateChoiceForm import CreateChoiceForm
 from ...models import Choice
 
 
