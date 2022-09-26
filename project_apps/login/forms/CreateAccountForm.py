@@ -1,15 +1,11 @@
 from django import forms
 
-from ..models import Student
+from ..models import CustomUser
 
 class CreateAccountForm(forms.ModelForm):
 	class Meta:
-		model = Student
-		fields = ['username', 'email', 'password', 'first_name', 'last_name', 'middle_name', 'student_id', 'course']
-		help_texts = {
-			'student_id': '<sup>*optional</sup>',
-			'course': '<sup>*optional</sup>'
-		}
+		model = CustomUser
+		fields = ['username', 'email', 'password', 'first_name', 'last_name', 'middle_name']
 
 		widgets = {
 			'username': forms.TextInput(attrs={'placeholder': 'Username'}),
@@ -20,6 +16,4 @@ class CreateAccountForm(forms.ModelForm):
 			'first_name': forms.TextInput(attrs={'placeholder': 'First Name'}),
 			'last_name': forms.TextInput(attrs={'placeholder': 'Last Name'}),
 			'middle_name': forms.TextInput(attrs={'placeholder': 'Middle Name'}),
-			'student_id': forms.TextInput(attrs={'placeholder': 'Student Id'}),
-			'course': forms.TextInput(attrs={'placeholder': 'Course'})
 		}
